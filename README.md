@@ -15,9 +15,35 @@ This configuration aims to transform Neovim from a basic text editor into a comp
 
 <details>
 <summary>Spell Check</summary>
+</details>
 
+<details>
+<summary>Smart Line Wrapping</summary>
+
+This code block in the `option.lua` file is used to enable line wrapping for markdown/LaTeX files where I'm mainly writing but automatically switches to non-line wrapping when editing code.
+
+```lua 
+-- Enable line wrapping for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "tex" }, -- Add filetypes where wrapping is needed
+    callback = function()
+        vim.opt_local.wrap = true         -- Enable wrapping
+        vim.opt_local.linebreak = true   -- Break lines at word boundaries
+    end,
+})
+
+-- Disable line wrapping for other file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt_local.wrap = false       -- Disable wrapping
+    end,
+})
+```    
+</details>
 
 ## Plugin Conponents
+
 
 <details>
 <summary>Plugin Manager</summary>
@@ -37,7 +63,6 @@ This configuration aims to transform Neovim from a basic text editor into a comp
 6. **Community Support**: Actively developed and well-supported by the Neovim community.
 
 Overall, `lazy.nvim` focuses on providing a modern and efficient approach to managing Neovim plugins with an emphasis on performance.
-
 </details>
 
 <details>

@@ -13,7 +13,24 @@ opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-opt.wrap = false -- disable line wrapping
+--
+-- Enable line wrapping for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "tex" }, -- Add filetypes where wrapping is needed
+    callback = function()
+        vim.opt_local.wrap = true         -- Enable wrapping
+        vim.opt_local.linebreak = true   -- Break lines at word boundaries
+    end,
+})
+
+-- Disable line wrapping for other file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt_local.wrap = false       -- Disable wrapping
+    end,
+})
+
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
