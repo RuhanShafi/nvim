@@ -1,2 +1,1 @@
-require("rsvim.core")
-require("rsvim.lazy")
+/home/ruhanshafi/dotfiles/.config/nvim/init.lua
