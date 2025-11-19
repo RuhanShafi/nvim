@@ -54,4 +54,28 @@ return {
       },
     },
   },
+  {
+  "folke/snacks.nvim",
+  priority = 999,
+  lazy = false,
+  ---@type snacks.Config
+  opts = {
+    image = { enabled = true },
+    dashboard = { enabled = true },
+    indent = { enabled = true },
+    lazygit = { enabled = true },
+    notifier = { enabled = true},  
+    },
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = 'v0.1.9',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  }
 }
